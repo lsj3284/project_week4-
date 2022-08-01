@@ -4,26 +4,34 @@ import { useDispatch } from "react-redux";
 //useDispatch 는 reducer로 데이터를 전달해주기 위한 모듈 
 import nextId from "react-id-generator";
 // id 생성기 패키지
-import { addTodo } from "../../../redux/store/todos.js";                             
+import { addTodo } from "../../../redux/store/todos.js";
+
+//redux store에서 addTodo 
 
 const Form = () => {
+ 
   const id = nextId();
+  // 리액트 id 제너레이터를 통해 랜덤아이디 생성
 
   const dispatch = useDispatch();
+  //reducer로 데이터를 전달해주기위한 함수를 dispatch 변수에 저장
+
   const [todo, setTodo] = useState({
     id: 0,
     title: "",
     body: "",
     isDone: false,
   });
-  
-  //const todos = useSelector((state) => state.todos.todos);
+ 
+// 입력받는 초기값을  todo 함수에 저장
+
   const onChangeHandler = (event) => {
     const { name, value } = event.target;
     setTodo({ ...todo, [name]: value });     
-  };
+  }; // input태그를 통해서 입력받아지는 value값을 기존todo 함수에 덮어씌움
 
   const onSubmitHandler = (event) => {
+    // 
     event.preventDefault();
     if (todo.title.trim() === "" || todo.body.trim() === "") return;
 
