@@ -1,24 +1,13 @@
-import logo from './logo.svg';
-import './App.css';
+//1
+import React from 'react';
+// 쓰는이유: 브라우저가 읽을 수 있도록 jsx를 바꾸기 위해 작성
+import Router from "./route/Router";
+// 라우터 기능을 구현하기위해 Router import
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <Router /> //라우터 컴포넌트 생성
   );
 }
 
