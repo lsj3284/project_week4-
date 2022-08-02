@@ -6,7 +6,7 @@ import nextId from "react-id-generator";
 // id 생성기 패키지
 import { addTodo } from "../../../redux/store/todos.js";
 
-//redux store에서 addTodo 
+//redux store todos.js 에서 addTodo 함수를 가져옴 
 
 const Form = () => {
  
@@ -27,22 +27,27 @@ const Form = () => {
 
   const onChangeHandler = (event) => {
     const { name, value } = event.target;
+    //event.target.name과 event.target.value 의 정보를 받아옴
     setTodo({ ...todo, [name]: value });     
-  }; // input태그를 통해서 입력받아지는 value값을 기존todo 함수에 덮어씌움
+  }; // input태그를 통해서 입력받아지는 key : value값을 기존todo 함수에 덮어씌움
 
   const onSubmitHandler = (event) => {
-    // 
     event.preventDefault();
-    if (todo.title.trim() === "" || todo.body.trim() === "") return;
+    //새로고침을 막아주는 함수
 
+    if (todo.title.trim() === "" || todo.body.trim() === "") return;
+    // trim() 양끝 공백을 제거하는 메소드
+    // 공백을 제거해서 나온 내용이 빈값인지, 입력한 값이 없는지를 확인
+    // return 동작되지 않도록 함수를 끝내버림
     dispatch(addTodo({ ...todo, id }));
+    //  dispatch 를 통해 창구 안의 내용들 ( todo(입력된값)과 id값을 todos.js에 addTodo 에 내용 전달)
     setTodo({
       id: 0,
       title: "",
       body: "",
       isDone: false,
     });
-  };
+  };  // 입력이 끝나면 input안의 내용 제거 해줌
 
   return (
     <StAddForm onSubmit={onSubmitHandler}>
